@@ -1,6 +1,6 @@
-Scaled Euclidean Distance Attention of Transformer
+# Scaled Euclidean Distance Attention of Transformer
 
-## Confirmation of learning for vision transformer
+## Confirmation of learning for vision Transformer
 
 To confirm here, I tried learning using Self Attention of Transformer Encoder, an image classification program, and learning progressed using Euclidean distance. For inner product, one epoch takes about 8 minutes, and for Euclidean distance, it takes about 15 minutes. Although it is not possible to conclude the goodness of the model just by learning for this confirmation, if you use the normal inner product for the similarity between q and k in the image classification program in the book ``Learning Image Recognition with Python'', The book says that the accuracy rate of the test data is 63.8%. In the book's program, the learning rate was 66.7% using the reciprocal of the Euclidean distance instead of the inner product.
 
