@@ -11,7 +11,7 @@ class ScaledEuclidDistanceAttention(nn.Module):
 
         dim_head = dim_hidden // num_heads
 
-        # ソフトマックスのスケール値
+        # Scale Value of Softmax
         self.scale = dim_head ** -0.5
 
         self.proj_q = nn.Linear( dim_hidden, dim_hidden, bias=qkv_bias)
@@ -32,7 +32,7 @@ class ScaledEuclidDistanceAttention(nn.Module):
 
         qk_dis = torch.cdist( q, k, p = 2 ) * self.scale # cdist が pytorch の距離関数です。
         attn =  1 / ( qk_dis + 1e-9 )
-        # 学習の確認は mask = None でとりました。
+        # Confirmation of learning was carried out mask = None
         if mask is not None:
             attn = attn + torch.unsqueeze( torch.unsqueeze( mask, dim = 1 ), dim = 3 ).to(torch.float16) * -1e9
         attn = ( attn ).softmax(dim=-1)  
