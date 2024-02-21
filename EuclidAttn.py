@@ -32,7 +32,7 @@ class ScaledEuclidDistanceAttention(nn.Module):
 
         qk_dis = torch.cdist( q, k, p = 2 ) * self.scale # cdist is distance function of pytorch
         attn =  1 / ( qk_dis + 1e-9 )
-        # Confirmation of learning was carried out with mask = None
+        # Check of learning was carried out with mask = None
         if mask is not None:
             attn = attn + torch.unsqueeze( torch.unsqueeze( mask, dim = 1 ), dim = 3 ).to(torch.float16) * -1e9
         attn = ( attn ).softmax(dim=-1)  
