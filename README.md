@@ -2,7 +2,7 @@
 
 ## Check of learning with vision Transformer
 
-To check the proposed attention, I tried learning using Self Attention of Transformer Encoder, an image classification program, and learning progressed using Euclidean distance. For inner product, one epoch takes about 8 minutes, and for Euclidean distance, it takes about 15 minutes. Although it is not possible to conclude the goodness of the model just by learning for this check, if you use the normal inner product for the similarity between q and k , the book "Learning Image Recognition with Python" in Japanese says that the accuracy rate of the test data is 63.8% in the image classification program for a certain problem. In the book's program, the learning rate was 66.7% using the reciprocal of the Euclidean distance instead of the inner product.
+To check the proposed attention, I tried learning using Self Attention of Transformer Encoder, an image classification program, and learning progressed using Euclidean distance. For inner product, one epoch takes about 8 minutes, and for Euclidean distance, it takes about 15 minutes. Although it is not possible to conclude the goodness of the model just by learning for this check, if you use the normal inner product for the similarity between q and k , the book "Learning Image Recognition with Python" in Japanese says that the accuracy rate of the test data is 63.8% in the image classification program for a certain problem. In the book's program, the learning rate was 66.7% using the reciprocal of the Euclidean distance instead of the inner product for the same problem.
 
 ### Chnaging of Loss for image classification
 
