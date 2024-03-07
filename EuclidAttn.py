@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class MultiHeadAttention(nn.Module):
-    def __init__(self, dim_hidden: int, n_head: int, qkv_bias: bool=False):
+    def __init__(self, dim_hidden: int, n_head: int, dropout: float=0.1, qkv_bias: bool=False):
         super().__init__()
         self.n_head = n_head
 
@@ -11,7 +11,7 @@ class MultiHeadAttention(nn.Module):
         self.proj_v = nn.Linear( dim_hidden, dim_hidden, bias=qkv_bias)
         self.proj_out = nn.Linear(dim_hidden, dim_hidden)
 
-        self.qkv_attention = ScaledEuclidDistanceAttention( dim_hidden, n_head )
+        self.qkv_attention = ScaledEuclidDistanceAttention( dim_hidden, n_head, dropout )
         
     def forward( self,query,key,value, attn_mask = None ):
 
@@ -61,7 +61,7 @@ class ScaledEuclidDistanceAttention(nn.Module):
         x = x.permute(0, 2, 1, 3).flatten(2)
 
         return x
-    
+
 if __name__ == "__main__":
 
     num_batch = 8
