@@ -51,7 +51,7 @@ class ScaledEuclidDistanceAttention(nn.Module):
         attn =  1 / ( qk_dis + 1e-9 )
         # Check of learning was carried out with mask = None
         if mask is not None:
-            attn = attn + torch.unsqueeze( torch.unsqueeze( mask, dim = 1 ), dim = 3 ).to(torch.float16) * -1e9
+            attn = attn + torch.unsqueeze( torch.unsqueeze( mask, dim = 0 ), dim = 0 ).to(torch.float16) * -1e9
         attn = ( attn ).softmax(dim=-1)  
 
         attn = self.dropout( attn )
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     q = torch.randn( ( num_batch, q_seq, dim_hidden))
     k = torch.randn( ( num_batch, k_seq, dim_hidden))
     v = k
-    mask = torch.randint(low=0, high=2, size=(num_batch,q_seq)).to( torch.bool )
+    mask = torch.randint(low=0, high=2, size=(q_seq,k_seq)).to( torch.bool )
 
     x = func2( q,k,v,mask)
 
